@@ -20,8 +20,10 @@ export default function App() {
     <div>
         <h1>Memory Game</h1>
         <Board increment={increment} reset={reset} />
-        <h2>Current score: {count}</h2>
-        <h2>High score: {highScore}</h2>
+        <div className={"Score"}>
+            <p>Score: {count}</p>
+            <p>High Score: {highScore}</p>
+        </div>
     </div>
   );
 }

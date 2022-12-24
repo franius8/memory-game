@@ -2,4 +2,6 @@
     cursor: pointer;
     height: 3rem;
     width: 3rem;
+    padding: 1.25rem;
+    background-color: white;
 }

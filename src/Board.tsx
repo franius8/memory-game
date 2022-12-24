@@ -8,7 +8,8 @@ export interface BoardProps {
 }
 
 export default function Board(props: BoardProps) {
-    const icons = ["hippo", "fish", "dragon", "otter", "horse", "cow", "frog", "spider", "kiwi"];
+    const icons = ["hippo", "fish", "dragon", "otter", "horse", "cow", "frog", "spider", "kiwi",
+    "shrimp", "dove", "crow", "dog", "cat", "locust", "mosquito"];
     const [shuffledNumbers, setShuffledNumbers] = React.useState<string[]>(icons);
     const [clickedNumbers, setClickedNumbers] = React.useState<string[]>([]);
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -20,7 +21,7 @@ export default function Board(props: BoardProps) {
             props.reset();
             setClickedNumbers([]);
         } else {
-            if (clickedNumbers.length === 8) {
+            if (clickedNumbers.length === 15) {
                 props.increment();
                 setClickedNumbers([]);
             } else {
