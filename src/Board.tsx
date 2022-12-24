@@ -8,15 +8,15 @@ export interface BoardProps {
 }
 
 export default function Board(props: BoardProps) {
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const [shuffledNumbers, setShuffledNumbers] = React.useState<number[]>(numbers);
-    const [clickedNumbers, setClickedNumbers] = React.useState<number[]>([]);
+    const icons = ["hippo", "fish", "dragon", "otter", "horse", "cow", "frog", "spider", "kiwi"];
+    const [shuffledNumbers, setShuffledNumbers] = React.useState<string[]>(icons);
+    const [clickedNumbers, setClickedNumbers] = React.useState<string[]>([]);
     const clickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
         let newNumbers = shuffledNumbers
         newNumbers = newNumbers.sort(() => Math.random() - 0.5);
         setShuffledNumbers([...newNumbers]);
-        const clickedNumber = parseInt(event.currentTarget.innerText);
-        if (clickedNumbers.includes(clickedNumber)) {
+        const clickedIcon = event.currentTarget.id;
+        if (clickedNumbers.includes(clickedIcon)) {
             props.reset();
             setClickedNumbers([]);
         } else {
@@ -25,15 +25,15 @@ export default function Board(props: BoardProps) {
                 setClickedNumbers([]);
             } else {
                 props.increment();
-                setClickedNumbers([...clickedNumbers, clickedNumber]);
+                setClickedNumbers([...clickedNumbers, clickedIcon]);
             }
         }
     };
 
     return (
         <div className={"Board"}>
-            {shuffledNumbers.map((number) => (
-                <Card content={number} key={number} click={clickHandler}/>
+            {shuffledNumbers.map((icon) => (
+                <Card content={icon} key={icon} click={clickHandler}/>
             ))}
         </div>
     );
