@@ -1,12 +1,14 @@
-import React from "react";
+import React, {MouseEventHandler} from "react";
+import "./Card.css";
 
 export interface CardProps {
     content: number;
+    click: MouseEventHandler<HTMLDivElement>;
 }
 
 export default function Card(props: CardProps) {
   return (
-    <div>
+    <div className={"Card"} onClick={props.click}>
         {props.content}
     </div>
   );
